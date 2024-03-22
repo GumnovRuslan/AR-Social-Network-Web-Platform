@@ -1,13 +1,29 @@
 <script>
     import AsideItem from "./AsideItem.svelte";
-    import AsideOnline from "./AsideOnline.svelte";
+    import UserMini from "../UserMini.svelte";
+    import {compass, search, people, chat, bell} from '../../icons.js'
 
     let data = [
-        {text: 'Freed'},
-        {text: 'Search'},
-        {text: 'Message'},
-        {text: 'Friends'},
-        {text: 'Notification'},
+        {
+            text: 'Freed',
+            icon: compass
+        },
+        {
+            text: 'Search',
+            icon: search
+        },
+        {
+            text: 'Message',
+            icon: chat
+        },
+        {
+            text: 'Friends',
+            icon: people
+        },
+        {
+            text: 'Notification',
+            icon: bell
+        },
     ]
 
     let activeButtonId = null;
@@ -25,11 +41,11 @@
         </div>
         <div class='aside__main'>
             <div class='aside__main-nav-items'>
-                {#each data as content, i}
+                {#each data as content}
                     <AsideItem {...content}/>
                 {/each}
             </div>
-            <AsideOnline />
+            <UserMini status={true}/>
         </div>
     </div>
 </div>
@@ -77,7 +93,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            min-height: 500px;
+            // min-height: 500px;
         }
     }
 </style>

@@ -1,12 +1,25 @@
 <script>
     import Button from "../lib/components/Button.svelte";
-    import {plus_square} from '../lib/icons.js'
+    import Post from '../lib/components/feed/Post.svelte'
+    import image1 from '/static/post-image.webp?enhanced'
+    import image2 from '/static/post-image2.webp?enhanced'
+    import {plusSquare} from '../lib/icons.js'
 
-    let icon = {
-        icon: plus_square,
-        color: '#f5f5f5',
-        size: [20, 20]
-    }
+    let posts = [
+        {
+            text: [
+                'I have been traveling for the last 2 months. I want to share the most interesting moments!',
+                'I have been traveling for the last 2 months. I want to share the most interesting moments!'
+            ],
+            images: [image1, image2]
+        },
+        {
+            text: [
+                'I have been traveling for the last 2 months. I want to share the most interesting moments!',
+            ],
+            images: [image2]
+        }
+    ];
 </script>
 
 <section class='freed'>
@@ -14,8 +27,13 @@
         <h1 class='freed__title'>Freed</h1>
         <div class='freed__create'>
             <input type='text' class='freed__create-input' placeholder="Create new post">
-            <Button {...icon}/>
+            <Button icon={plusSquare} size={[20, 20]}/>
         </div>
+    </div>
+    <div class="freed__content">
+        {#each posts as post}
+            <Post {...post}/>
+        {/each}
     </div>
 </section>
 
@@ -23,6 +41,8 @@
     .freed {
         display: flex;
         flex-direction: column;
+        gap: 10px;
+        height: 100%;
 
         &__header {
         }
@@ -53,6 +73,15 @@
             &::placeholder {
                 color: #a7a7a7;
             }
+        }
+
+        &__content {
+            overflow: auto;
+            padding-bottom: 1px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
     }
 </style>

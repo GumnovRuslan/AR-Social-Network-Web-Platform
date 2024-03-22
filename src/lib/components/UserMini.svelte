@@ -1,24 +1,31 @@
 <script>
     import image from '/static/user.webp?enhanced'
+    export let status = false;
+    export let date = false;
 </script>
 
 <div class='user'>
     <div class='user__inner'>
-        <span class='user__photo'>
+        <a href="#" class='user__photo'>
             <enhanced:img class="user__photo-img" src={image} alt="An alt text" />
-        </span>
+        </a>
         <div class='user__info'>
             <p class='user__name'>Hellen Willson</p>
-            <div class='user__status'>
-                <span class='user__status-mark'></span>
-                <span class='user__status-text'> Online</span>
-            </div>
+            {#if status}
+                <div class='user__status'>
+                    <span class='user__status-mark'></span>
+                    <span class='user__status-text'> Online</span>
+                </div>
+            {/if}
+            {#if date}
+                <p class='user__date'>12 August, 10:13 AM</p>
+            {/if}
         </div>
     </div>
 </div>
 
 <style lang="scss">
-    $image-size: 65px;
+    $image-size: 60px;
     .user {
 
         &__inner {
@@ -28,6 +35,7 @@
         }
 
         &__photo {
+            text-decoration: none;
             display: block;
             width: $image-size;
             height: $image-size;
@@ -68,6 +76,11 @@
 
         &__status-text {
             color: #fff;
+        }
+
+        &__date {
+            font-size: 14px;
+            color: #bebebe;
         }
 
     }

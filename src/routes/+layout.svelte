@@ -31,26 +31,28 @@
 
     .application {
         width: 93%;
-        max-height: 100vh;
+        height: 90vh;
         display: flex;
         flex-direction: column;
-
 
         &__main {
             display: flex;
             justify-content: center;
             gap: 10px;
+            height: 100%;
         }
 
         &__main-nav {
             flex: 1 0 auto;
+            width: 100%;
             max-width: 350px;
         }
 
         &__main-content {
             flex: content;
             width: 100%;
-            padding: 50px;
+            max-height: 100%;
+            padding: 35px 35px;
             border-radius: 30px;
             border: 1px solid #96959580;
             background: #81818180;

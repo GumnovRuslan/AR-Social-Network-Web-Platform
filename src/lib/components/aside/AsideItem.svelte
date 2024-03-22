@@ -1,6 +1,6 @@
 <script>
 	import {activeItem} from './store'
-  export let text = ''
+	export let text = ''
 	export let icon = ''
 
 	let isActive = false
@@ -11,8 +11,8 @@
 </script>
 
 <button class='item' class:item--active={isActive} on:click={() => activeItem.set(text)}>
-  <span class='item__icon'>{icon}</span>
-  <span class='item__text'>{text}</span>
+	<span class='item__icon' class:item__icon--active={isActive}>{@html icon}</span>
+	<span class='item__text'>{text}</span>
 </button>
 
 <style lang="scss">
@@ -32,16 +32,21 @@
 			background: #cacaca65 !important;
 		}
 
-  	&__icon {
+	&__icon {
 			display: inline-block;
 			width: 30px;
 			height: 30px;
-			background: #000;
+			color: #adadad;
+			transition: 0.2s;
+
+			&--active {
+				color: #f5f5f5 !important;
+			}
     }
 
 		&__text {
 			font-size: 18px;
 			color: #fff;
 		}
-  }
+	}
 </style>
