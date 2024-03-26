@@ -1,5 +1,5 @@
 <script>
-	import {activeItem} from './store'
+	import {activeItem} from '../../stores/store'
 	export let text = ''
 	export let icon = ''
 
